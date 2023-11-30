@@ -14,9 +14,5 @@ if __name__ == '__main__':
         exit(1)
 
     # Найти искомую сумму.
-    s = 0
-    for item in A:
-        if abs(item) < 5:
-            s += item
-
+    s = sum([i for i in A if abs(i) < 5])
     print(s)

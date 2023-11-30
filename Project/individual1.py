@@ -6,18 +6,15 @@ import sys
 
 
 if __name__ == '__main__':
-    a = list(map(int, input().split()))
+    A = list(map(int, input().split()))
 
-    if not a:
-        print("Заданный список пуст", file=sys.stderr)
+    if len(A) != 10:
+        print("Неверный размер списка", file=sys.stderr)
         exit(1)
 
-    # Определить индексы минимального и максимального элементов.
-    a_min = a_max = a[0]
-    for i, item in enumerate(a):
-        if abs(item) < abs(a_min):
-            a_min = item
-        if abs(item) >= abs(a_max):
-            a_max = item
+    m = 1
+    for i in A:
+        if i > 0:
+            m *= i
 
-    print(a_max, a_min)
+    print(m)

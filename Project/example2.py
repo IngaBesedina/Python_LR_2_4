@@ -27,9 +27,5 @@ if __name__ == '__main__':
         i_min, i_max = i_max, i_min
 
     # Посчитать количество положительных элементов.
-    count = 0
-    for item in a[i_min+1:i_max]:
-        if item > 0:
-            count += 1
-
+    count = len([i for i in a[i_min+1:i_max] if i > 0])
     print(count)
