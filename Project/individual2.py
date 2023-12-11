@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+
 import sys
+from functools import reduce
 
 if __name__ == '__main__':
     a = list(map(int, input().split()))
@@ -12,20 +14,13 @@ if __name__ == '__main__':
 
     s = sum([i for i in a if i > 0])
 
-    a_min = a_max = abs(a[0])
-    i_min = i_max = 0
-    for i, item in enumerate(a):
-        if abs(item) < a_min:
-            i_min, a_min = i, abs(item)
-        if abs(item) >= a_max:
-            i_max, a_max = i, abs(item)
+    a_min, i_min = min((abs(item), i) for i, item in enumerate(a))
+    a_max, i_max = max((abs(item), i) for i, item in enumerate(a))
 
     if i_min > i_max:
         i_min, i_max = i_max, i_min
 
-    m = 1
-    for item in a[i_min+1:i_max]:
-        m *= item
+    m = reduce(lambda x, y: x * y, [i for i in a[i_min + 1:i_max]])
 
     print(f"Сумма положительных элементов списка: {s}")
     print("Произведение элементов списка, расположенных между"

@@ -3,18 +3,15 @@
 
 
 import sys
+from functools import reduce
 
 
 if __name__ == '__main__':
-    A = list(map(int, input().split()))
+    a = list(map(int, input().split()))
 
-    if len(A) != 10:
+    if len(a) != 10:
         print("Неверный размер списка", file=sys.stderr)
         exit(1)
 
-    m = 1
-    for i in A:
-        if i > 0:
-            m *= i
-
+    m = reduce(lambda x, y: x * y, [i for i in a if i > 0])
     print(m)
